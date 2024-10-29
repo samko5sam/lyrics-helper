@@ -1,6 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react/prop-types */
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 const GlobalContext = createContext();
 export const useGlobalContext = () => useContext(GlobalContext);

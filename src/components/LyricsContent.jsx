@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useGlobalContext } from "../context/GlobalProvider";
 import SearchWithSuggestions from "./SearchWithSuggestion";
 import { LyricsText } from "./LyricsText";
-import TextSelectTest from "./TextSelectTest";
 import { Alert } from "react-bootstrap";
 import VocabularyReview from "./VocabularyReview";
 

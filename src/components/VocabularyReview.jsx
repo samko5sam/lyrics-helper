@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Modal, Button, ListGroup, Badge, Table } from 'react-bootstrap';
+import { useState } from 'react';
+import { Modal, Button, ListGroup, Badge } from 'react-bootstrap';
 
 function VocabularyReview({ wordBooks }) {
   const [showReviewModal, setShowReviewModal] = useState(false);
