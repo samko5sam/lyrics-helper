@@ -76,7 +76,7 @@ export const LyricsText = ({content: {
     try {
       const response = await translate(text, {
         to: "zh",
-        corsUrl: "http://cors-anywhere.herokuapp.com/"
+        corsUrl: import.meta.env.PROD ? "https://cors-anywhere.sk5s.cyou/" : "http://cors-anywhere.herokuapp.com/"
         // corsUrl: "https://corsproxy.io/?"
       })
       const data = await response.text;
