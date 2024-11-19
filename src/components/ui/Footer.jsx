@@ -8,10 +8,10 @@ const Footer = () => {
         <Row>
           {/* Links Section */}
           <Col md={4}>
-            <h5>Quick Links</h5>
+            {/* <h5>Quick Links</h5>
             <ul className="list-unstyled">
               <li><a href="https://cors-anywhere.herokuapp.com/" target='_blank' rel='noopener nofollow' className="text-dark">Enable Translate Functions</a></li>
-            </ul>
+            </ul> */}
           </Col>
 
           {/* Social Media Section */}

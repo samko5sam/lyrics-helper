@@ -42,7 +42,7 @@ export const LyricsText = ({content: {
             setLastSelected(text);
           }
         } else {
-          const result = await translateText(text);
+          const result = await translateTextWithCustomApi(text);
           console.log(result);
           setDescriptionContent([{
             original: text,
@@ -51,7 +51,7 @@ export const LyricsText = ({content: {
           setLastSelected(text);
         }
       } else {
-        const result = await translateText(text);
+        const result = await translateTextWithCustomApi(text);
         console.log(result);
         setDescriptionContent([{
           original: text,
@@ -73,6 +73,9 @@ export const LyricsText = ({content: {
     }
   }
   const translateText = async (text) => {
+    if (!import.meta.env.PROD) {
+      return translateTextWithCustomApi(text)
+    }
     try {
       const response = await translate(text, {
         to: "zh",
@@ -85,6 +88,26 @@ export const LyricsText = ({content: {
       return converter(data);
     } catch (error) {
       console.log(error);
+      return "翻譯發生錯誤"
+    }
+  }
+  const translateTextWithCustomApi = async (text) => {
+    try {
+      const response = await fetch(import.meta.env.PROD ? "https://translate-api-endpoint.onrender.com/translate" : "http://localhost:5050/translate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: "zh-Hant",
+          text: text
+        })
+      })
+      const data = await response.json()
+      console.log(data)
+      return data[0].translations[0].text || "翻譯發生錯誤"
+    } catch (error) {
+      console.log(error)
       return "翻譯發生錯誤"
     }
   }
